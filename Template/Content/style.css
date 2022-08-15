@@ -1,0 +1,266 @@
+
+/*-----------Hero Section-------------*/
+
+h2{
+    font-size: 5rem;
+    font-weight: bold;
+}
+.coming-soon{
+    min-height: 50vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+.countdown {
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+}
+.day, .hour, .minute, .second{
+    font-size: 3rem;
+}
+.waiting{
+    height: 50vh;
+
+}
+
+.jumbotron {
+    color: white;
+    /* background-image: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('../assets/Hero.jpg'); */
+    background-image: linear-gradient( rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.1) ), url('../assets/Hero.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    position: relative;
+}
+.jumbo {
+    position: absolute;
+    left: 0;
+    top: 35%;
+    width: 100%;
+    text-align: center;
+}
+.datetime {
+    font-family: 'Poppins', sans-serif;
+    background: #10101E;
+    padding: 15px 10px;
+    width: 350px;
+    margin: auto; 
+    border: 3px solid #2E94E3;
+    border-radius: 5px;
+    transition: 0.5s;
+    -webkit-box-reflect: below 1px linear-gradient(transparent, rgba(255, 255, 255, 0.1));
+}
+.datetime:hover {
+    background: #2E94E3;
+    box-shadow: 0 0 30px #2E94E3;
+}
+.date{
+    font-size: 20px;
+    font-weight: 600;
+    text-align: center;
+    letter-spacing: 3px;
+}
+.time {
+    font-size: 50px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    letter-spacing: 3px;
+}
+
+.header__button {
+	font-size: 1.1rem;
+	color: #ffffff;
+    border: 2px solid #ec111a;
+    background-color: #ec111a;
+	border-radius: 5px;
+	font-weight: 600;
+	padding: 8px 12px;
+}
+.header__button:hover{
+    background-color: #d43138;
+	color: #ffffff;  
+}
+/*------------About us Section-------------*/
+.title::after{
+	content: '';
+	display: block;
+	margin: 0.5rem auto 0 auto;
+	height: 5px;
+	width: 100px;
+	background: #ec111a;
+}
+
+.foodimg, .card{
+        border: 1px solid #ec111a;
+        border-radius: 15px;
+}
+
+.foodimg:hover, .card:hover {
+        -webkit-filter: grayscale(0%);
+        filter: grayscale(0%);
+        box-shadow: 2px 2px 10px #ec111a;
+}
+
+#btnn{
+    font-size: 1rem;
+    font-weight: 600;
+	padding: 0.6rem 1.3rem;
+    background-color: #ec111a;
+	color: #ffffff;
+    border: 0;
+}
+
+#btnn:hover{
+    color: black;
+	border: 3px solid #ec111a;
+    background-color: transparent;
+}
+
+.fa-arrow-right{
+    padding-left: 4px;
+}
+
+input, #btnn{
+	box-shadow: 1px 1px 2px #b5a9a9;
+}
+.card:hover {
+	box-shadow: 2px 2px 10px #ec111a;
+}
+
+/*------------Gallery Section-------------*/
+.galleryimg img:hover{
+    transform: scale(0.9);
+    transition: 2s;
+}
+textarea:focus, input:focus{
+    outline: none !important;
+}
+
+
+/*-----------Media Queries Section (Responsiveness)-------------*/
+@media screen and (min-width: 375px) {
+    /* .jumbo{
+        margin-top: 2rem;
+        padding-top: 40px;
+    } */
+}
+
+@media screen and (min-width: 768px) {
+    /* .jumbo{
+        margin-top: 2rem;
+    }
+    .header__title{
+        font-size: 3.2rem;
+    }   
+    .header__subtitle {
+        font-size: 1.3rem;
+    } */
+}
+@media screen and (min-width: 1440px) {
+    /* .jumbo{
+        margin-top: 4rem;
+    }
+    .header__title{
+        font-size: 3.2rem;
+    }   
+    .header__subtitle {
+        font-size: 1.4rem;
+    } */
+}
+.classes-block .item {
+    overflow: hidden;
+    margin: 10px 0px 40px 0px;
+    opacity: 1;
+}
+.classes-block .item.info{
+	position: relative;
+    display: inline-block;
+}
+.classes-block .item .desc {
+    display: grid;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    color: #fff;
+    padding: 16px;
+    font-size: 17px;
+    line-height: 10px;
+    width: 100%;
+    margin-top: 60px;
+    opacity: 1;
+    transition: 0.8s ease;
+    text-align: center;
+}
+.classes-block .item .desc .desc-heading {
+    font-size:0.9em;
+    font-weight: bold;
+}
+
+.classes-block .item .desc .desc-body {
+    font-size: 0.8em;
+    line-height: 1.1em;
+    font-weight: 300px;
+}
+
+.classes-block .item .desc .desc-pay {
+    color: #ec111a;
+    font-weight: 300px;
+    font-size: 0.8em;
+    margin-top: 10px;
+}
+
+.bookingDetails div p{
+	width: 80%;
+	margin: 30px auto;
+	background: rgb(224, 224, 224);
+	padding: 20px;
+	border-bottom: 3px solid lightgray;
+}
+
+
+
+/* Portfolio Section css */
+.portfolio{
+	background:url(../assets/peter-bravo-de-los-rios-OklpRh8-Sns-unsplash.jpg) center center no-repeat;
+	-moz-background-size: cover;
+	-webkit-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	width: 100%;
+	overflow: hidden;	
+}
+.single_portfolio_text{
+	display:inline-block;
+	position:relative;
+	overflow:hidden;
+
+}
+.single_portfolio_text img{
+	width:100%;
+}
+
+.single_portfolio_text:hover .portfolio_images_overlay{
+	top: 42px;
+    left: 14px;
+}
+
+.portfolio_images_overlay{
+	width: 91%;
+    height: 50%;
+    background: rgba(0, 0, 0, .5);
+    margin: 0 auto;
+    padding-top: 14px;
+    top:-100%;
+    left: 14px;
+    position: absolute;
+	transition:.6s;
+}
+
+.portfolio_images_overlay p.product_price{
+	font-size: 1.5725rem;
+	color:#fff;
+}

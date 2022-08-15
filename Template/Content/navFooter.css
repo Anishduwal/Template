@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css?family=Dancing+Script|Roboto|Montserrat|Roboto&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-size: cover;
+}
+.bg-cols{
+    color: #ec111a;
+}
+ul{
+    list-style-type: none;
+}
+
+li a:hover{
+    color: #ec111a;
+}
+/*------------Nav Section-------------*/
+.navbar-brand{
+    font-weight: bold;
+    padding-left: 5%;
+}
+
+.nav-item{
+    padding-right: 22px;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+.nav-link:hover {
+	color: #ec111a !important;
+}
+
+.nav-item.active a {
+	color: #ec111a !important;
+}
+.cart_count {
+    position: relative;
+    top: -3px;
+    left: -5px;
+    font-size: 11px;
+    background-color: #ec111a;
+    border-radius: 50px;
+    height: 16px;
+    line-height: 16px;
+    color: #fff;
+    min-width: 16px;
+    text-align: center;
+    padding: 0 5px;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.cartitems    {position: fixed;
+    top: 103px;
+    right: 0px;
+    width: 25%;
+    height:100vh;
+    background: white;
+    opacity: 0;
+    transition: left 0.25s ease-in-out, opacity 0.25s ease-in-out;
+    z-index: 9999;}
+
+
+
+/* .cart__items   {display: flex;
+        align-items: center;
+        color: whitesmoke;
+        padding: 22px;
+        text-decoration: none;
+        font-weight: 300;
+        border-bottom: 3px solid #f3eee4;
+        } */
+
+
+
+.cart__items:active {color: #fedc3d}
+
+.cartitems--open {right:0; opacity: 1;}
+
+/*------------Footer Section-------------*/
+.footer__heading {
+	font-size: 1.9rem;
+	font-weight: 600;
+	text-transform: uppercase;
+}
+
+.footer a:hover{
+    text-decoration: none;
+    color: #ec111a;
+}
+
+.footer__inner {
+	border-top: 1px solid #ffffff;
+}

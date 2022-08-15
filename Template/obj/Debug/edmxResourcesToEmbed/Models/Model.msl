@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ProjectModelStoreContainer" CdmEntityContainer="ProjectEntities">
+    <EntitySetMapping Name="Images">
+      <EntityTypeMapping TypeName="ProjectModel.Image">
+        <MappingFragment StoreEntitySet="Image">
+          <ScalarProperty Name="image_path" ColumnName="image_path" />
+          <ScalarProperty Name="image_name" ColumnName="image_name" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="Restaurant_id" ColumnName="Restaurant_id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Restaurants">
+      <EntityTypeMapping TypeName="ProjectModel.Restaurant">
+        <MappingFragment StoreEntitySet="Restaurant">
+          <ScalarProperty Name="support_number" ColumnName="support_number" />
+          <ScalarProperty Name="support_logo_path" ColumnName="support_logo_path" />
+          <ScalarProperty Name="support_logo_name" ColumnName="support_logo_name" />
+          <ScalarProperty Name="DisplayReservationbutton" ColumnName="DisplayReservationbutton" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="subtitle" ColumnName="subtitle" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Store_Infoes">
+      <EntityTypeMapping TypeName="ProjectModel.Store_Info">
+        <MappingFragment StoreEntitySet="Store Info">
+          <ScalarProperty Name="Enable_future_order" ColumnName="Enable_future_order" />
+          <ScalarProperty Name="phone_number" ColumnName="phone_number" />
+          <ScalarProperty Name="Zip_code" ColumnName="Zip_code" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="Street_address" ColumnName="Street_address" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Store_hours">
+      <EntityTypeMapping TypeName="ProjectModel.Store_hour">
+        <MappingFragment StoreEntitySet="Store hour">
+          <ScalarProperty Name="Open_time" ColumnName="Open_time" />
+          <ScalarProperty Name="To_time" ColumnName="To_time" />
+          <ScalarProperty Name="From_time" ColumnName="From_time" />
+          <ScalarProperty Name="Day" ColumnName="Day" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

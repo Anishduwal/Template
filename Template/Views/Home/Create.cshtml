@@ -1,0 +1,122 @@
+﻿@model Template.Models.Restaurant
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+
+}
+
+<h2>Create</h2>
+@using (Html.BeginForm("Create", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <form>
+        <div class="form-horizontal">
+            <div class="form-group">
+                @Html.LabelFor(x => x.title, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(x => x.title, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(x => x.subtitle, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(x => x.subtitle, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(x => x.address, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(x => x.address, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(x => x.description, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(x => x.description, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="lname" class="control-label col-md-2">Reservation:</label>
+                <div class="col-md-10">
+                    <input type="checkbox" class="form-control" data-toggle="toggle" data-on="Active" data-off="Inactive" data-onstyle="success" data-offstyle="danger" name="DisplayReservationbutton" value="true" form-control @(Model != null && !Model.DisplayReservationbutton ? "" : "checked" )><br>
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(x => x.support_number, "Support Number", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(x => x.support_number, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(x => x.supportname, "Support Logo Name", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <input type="file" class="form-control btn btn-success" name="supportname"><br>
+                </div>
+            </div>
+
+            <div class="form-group">
+
+                <div class="col-md-10 input_fields_wrap">
+                    <input type="hidden" value="a_0" name="Images.index" />
+
+                    <label for="title" class="control-label col-md-2">Title: </label>
+                    <div class="col-md-10">
+                        <input type="text" id="title" class="form-control" name="Images[a_0].title"><br>
+                    </div>
+
+                    <label for="Image_name" class="control-label col-md-2">Select Images: </label>
+
+                    <input type="file" name="Images[a_0].ImageFile" id="Image_name" class="form-control" />
+                    <button type="button" class="add_field_button">Add</button>
+                </div>
+            </div>
+
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div><br />
+        </div>
+    </form>
+}
+    <textarea class=" hidden" id="AddSection">
+        <div>
+            <input type="hidden" value="a_{p}" name="Images.index" />
+
+            <label for="title_{p}" class="control-label col-md-2">Title: </label>
+            <div class="col-md-10">
+                <input type="text" id ="title_{p}" class="form-control" name="Images[a_{p}].title"><br>
+            </div>
+
+            <label for="Image_name_{p}">Select Images: </label>
+
+            <input type="file" name="Images[a_{p}].ImageFile" id="Image_name_{p}" class="form-control" />
+            <a href="#" class="remove_field">Remove</a>
+        </div>
+    </textarea>
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var max_fields = 10;
+        var wrapper = $(".input_fields_wrap");
+        var add_button = $(".add_field_button");
+
+        var x = 1;
+        $(add_button).click(function (e) {
+            e.preventDefault();
+            if (x < max_fields) {
+                var data = $('#AddSection').val();
+                data = data.replace(/{p}/g, x);
+                //<input type="text" name="Details[a_' + x + '].Order_name" id="Order_name" placeholder="Enter Order Name" />
+                $(wrapper).append(data);
+                x++;
+            }
+        });
+
+        $(wrapper).on("click", ".remove_field", function (e) {
+            e.preventDefault();
+            $(this).parent('div').remove();
+            x--;
+        });
+    });
+</script>

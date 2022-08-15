@@ -1,0 +1,77 @@
+﻿@model Template.Models.Store_hour
+@{
+    ViewBag.Title = "error";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+
+}
+<link rel="stylesheet" href="~/Content/style.css" />
+<body>
+  <section class="coming-soon">
+      <div>
+          <h2>We are opening soon!</h2>
+          <div class="countdown">
+              <div class="container-day">
+                  <h3 class="day">Time</h3>
+                  <h3>Day</h3>
+              </div>
+              <div class="container-hour">
+                  <h3 class="hour">Time</h3>
+                  <h3>Hour</h3>
+              </div>
+              <div class="container-minute">
+                  <h3 class="minute">Time</h3>
+                  <h3>Minute</h3>
+              </div>
+              <div class="container-second">
+                  <h3 class="second">Time</h3>
+                  <h3>Second</h3>
+              </div>
+          </div>
+      </div>
+      <img clas="waiting" src="~/assets/img-requirements-3.png" />
+  </section>
+  @*<script src="~/Scripts/app.js"></script>*@
+</body>
+@{ 
+    var datetime = Model.From_time;
+    var endtime = Model.To_time;
+    var cdt = DateTime.Now.Date;
+    cdt = cdt.Add(datetime);
+    var abc = cdt.ToString();
+}
+<script type="text/javascript">
+
+    const countdown = () => {
+        const date = "@(abc)";
+        const countDate = new Date(date).getTime();
+        console.log(countDate);
+        const now = new Date().getTime();
+        const gap = countDate - now;
+        console.log(date);
+
+        if (countDate <= now) {
+            window.location = "/Store/Index";
+            console.log("data");
+
+        }
+        //How does time work?
+        const second = 1000;
+        const minute = second * 60;
+        const hour = minute * 60;
+        const day = hour * 24;
+
+        //calculate
+        const textDay = Math.floor(gap / day);
+        const textHour = Math.floor((gap % day) / hour);
+        const textMinute = Math.floor((gap % hour) / minute);
+        const textSecond = Math.floor((gap % minute) / second);
+
+        document.querySelector(".day").innerText = textDay;
+        document.querySelector(".hour").innerText = textHour;
+        document.querySelector(".minute").innerText = textMinute;
+        document.querySelector(".second").innerText = textSecond;
+        };
+
+        setInterval(countdown, 1000);
+
+</script>

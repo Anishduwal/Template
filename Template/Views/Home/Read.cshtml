@@ -1,0 +1,48 @@
+﻿@model IEnumerable<Template.Models.Restaurant>
+@{
+    ViewBag.Title = "Read";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+<h2>Read</h2>
+
+<table class="table table-bordered table-responsive table-condensed">
+    <thead>
+        <tr class="btn-primary">
+            <th>Id</th>
+            <th>Title</th>
+            <th>Sub Title</th>
+            <th>Description</th>
+            <th>Reservation</th>            
+            <th>Support logo Name</th>
+            <th>Support logo Path</th>
+            <th>Support Number</th>
+            <th>Action</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                @*<td>@Html.DisplayFor(a => item.name)</td>*@
+                <td>@item.id</td>
+                <td>@item.title</td>
+                <td>@item.subtitle</td>
+                <td>@item.description</td>
+                <td>@item.DisplayReservationbutton</td>
+                <td>@item.support_logo_name </td>
+                <td>@item.support_logo_path </td>
+                <td>@item.support_number</td>
+                <td>
+                    @Html.ActionLink("Edit", "Update", new { id = item.id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.id })
+                </td>
+            </tr>
+                       
+
+        }
+        @Html.ActionLink("Create", "Create")
+
+    </tbody>
+</table>

@@ -1,0 +1,150 @@
+﻿@model Template.Models.Restaurant
+@{
+    ViewBag.Title = "Update";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+
+}
+
+<h2>Update</h2>
+
+@using (Html.BeginForm("Update", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="form-horizontal">
+
+        <div class="form-group">
+            @Html.LabelFor(x => x.title, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(x => x.title, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(x => x.subtitle, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(x => x.subtitle, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(x => x.address, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(x => x.address, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(x => x.description, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(x => x.description, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="lname" class="control-label col-md-2">Reservation:</label>
+            <div class="col-md-10">
+                <input type="checkbox" class="form-control" data-toggle="toggle" data-on="Active" data-off="Inactive" data-onstyle="success" data-offstyle="danger" name="DisplayReservationbutton" value="true" form-control @(Model != null && !Model.DisplayReservationbutton ? "" : "checked" )><br>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.supportname, "Select Logo", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @if (Model != null && Model.support_logo_name != null)
+                {
+                    <a target="_blank" href="@Url.Content(Model.support_logo_path + Model.support_logo_name)">
+                        <img src="@Url.Content(Model.support_logo_path + "/" + Model.support_logo_name)" height="80" />
+                    </a>
+                }
+                <input type="file" class="form-control btn btn-success" name="supportname" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(x => x.support_number, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(x => x.support_number, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+        </div>
+        <div class="input_fields_wrap">
+            <button type="button" class="add_field_button">Add Image</button>
+
+            @foreach (var item in Model.Images)
+            {
+                <div class="col-md-10">
+                    <input type="hidden" value="@item.id" name="Images.index" />
+                    <div class="form-group">
+                        @Html.LabelFor(x => item.title, htmlAttributes: new { @class = "control-label col-md-2" })
+
+                        <div class="col-md-10">
+                            @Html.EditorFor(x => item.title, new { htmlAttributes = new { @class = "form-control", @Name = "Images[" + @item.id + "].title" } })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+
+                        @Html.LabelFor(x => x.Images, "Select Image", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-4">
+                            @if (item != null && item.image_name != null)
+                            {
+                                <a target="_blank" href="@Url.Content(item.image_path + item.image_name)">
+                                    <img src="@Url.Content(item.image_path + "/" + item.image_name)" height="80" />
+                                </a>
+                            }
+                            <input type="file" class="form-control btn btn-success" name="Images[@item.id].ImageFile" />
+                            <button type="button" class="add_field_button">Add</button>
+
+                        </div>
+                    </div>
+                </div>
+
+            }
+        </div>
+        
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Update" class="btn btn-default" />
+        </div>
+    </div>
+
+}
+
+
+<textarea class=" hidden" id="AddSection">
+<div class="col-md-offset-2 col-md-10">
+<input type="hidden" value="a_{p}" name="Images.index" />
+
+<label for="title_{p}" class="control-label col-md-2">Title: </label>
+<div class="col-md-10">
+<input type="text" id="title_{p}" class="form-control" name="Images[a_{p}].title"><br>
+        </div>
+
+<label for="Image_name_{p}">Select Images: </label>
+
+<input type="file" name="Images[a_{p}].ImageFile" id="Image_name_{p}" class="form-control" />
+<a href="#" class="remove_field">Remove</a>
+    </div>
+</textarea>
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var max_fields = 10;
+        var wrapper = $(".input_fields_wrap");
+        var add_button = $(".add_field_button");
+
+        var x = 1;
+        $(add_button).click(function (e) {
+            e.preventDefault();
+            if (x < max_fields) {
+                var data = $('#AddSection').val();
+                console.log("in");
+                data = data.replace(/{p}/g, x);
+                console.log(data);
+                //<input type="text" name="Details[a_' + x + '].Order_name" id="Order_name" placeholder="Enter Order Name" />
+                $(wrapper).append(data);
+                x++;
+            }
+        });
+
+        $(wrapper).on("click", ".remove_field", function (e) {
+            e.preventDefault();
+            $(this).parent('div').remove();
+            x--;
+        });
+    });
+</script>

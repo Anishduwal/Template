@@ -1,0 +1,91 @@
+﻿@model Template.Models.StoreModel
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+
+}
+
+<h2>Create</h2>
+@using (Html.BeginForm("Create", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <form>
+        <div class="form-horizontal">
+            <div class="form-group">
+                @Html.LabelFor(x => x.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(x => x.Name, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(x => x.Street_address, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(x => x.Street_address, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(x => x.State, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(x => x.State, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(x => x.City, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(x => x.City, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(x => x.Zip_code, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(x => x.Zip_code, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(x => x.phone_number, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(x => x.phone_number, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="Enable_future_order" class="control-label col-md-2">Future Order:</label>
+                <div class="col-md-10">
+                    <input type="checkbox" class="form-control" data-toggle="toggle" data-on="Active" data-off="Inactive" data-onstyle="success" data-offstyle="danger" name="Enable_future_order" value="true" form-control @(Model != null && !Model.Enable_future_order ? "" : "checked" )><br>
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(x => x.Day, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(x => x.Day, new { htmlAttributes = new { @class = "form-control datepicker", placeholder = "Enter Day", id = "Day", type = "day" } })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(x => x.From_time, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(x => x.From_time, new { htmlAttributes = new { @class = "form-control datepicker", id = "time", type = "time" } })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(x => x.To_time, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(x => x.To_time, new { htmlAttributes = new { @class = "form-control datepicker", id = "time", type = "time" } })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="Open_time" class="control-label col-md-2">Open Time:</label>
+                <div class="col-md-10">
+                    <input type="checkbox" class="form-control" data-toggle="toggle" data-on="Active" data-off="Inactive" data-onstyle="success" data-offstyle="danger" name="Open_time" value="true" form-control @(Model != null && !Model.Open_time ? "" : "checked" )><br>
+                </div>
+            </div>
+
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div><br />
+        </div>
+    </form>
+}

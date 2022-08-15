@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ProjectModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Image">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Restaurant_id" Type="bigint" />
+    <Property Name="title" Type="varchar" MaxLength="250" />
+    <Property Name="image_name" Type="varchar" MaxLength="250" />
+    <Property Name="image_path" Type="varchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="Restaurant">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="title" Type="varchar(max)" />
+    <Property Name="subtitle" Type="varchar(max)" />
+    <Property Name="address" Type="varchar" MaxLength="250" />
+    <Property Name="description" Type="varchar(max)" />
+    <Property Name="DisplayReservationbutton" Type="bit" Nullable="false" />
+    <Property Name="support_logo_name" Type="varchar" MaxLength="250" />
+    <Property Name="support_logo_path" Type="varchar" MaxLength="250" />
+    <Property Name="support_number" Type="varchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="Store hour">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Day" Type="varchar" MaxLength="50" />
+    <Property Name="From_time" Type="time" Precision="7" Nullable="false" />
+    <Property Name="To_time" Type="time" Precision="7" />
+    <Property Name="Open_time" Type="bit" />
+  </EntityType>
+  <EntityType Name="Store Info">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" />
+    <Property Name="Street_address" Type="varchar" MaxLength="50" />
+    <Property Name="State" Type="varchar" MaxLength="50" />
+    <Property Name="City" Type="varchar" MaxLength="50" />
+    <Property Name="Zip_code" Type="int" />
+    <Property Name="phone_number" Type="varchar" MaxLength="50" />
+    <Property Name="Enable_future_order" Type="bit" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Image_Image">
+    <End Role="Restaurant" Type="Self.Restaurant" Multiplicity="0..1" />
+    <End Role="Image" Type="Self.Image" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Restaurant">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Image">
+        <PropertyRef Name="Restaurant_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ProjectModelStoreContainer">
+    <EntitySet Name="Image" EntityType="Self.Image" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Restaurant" EntityType="Self.Restaurant" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Store hour" EntityType="Self.Store hour" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Store Info" EntityType="Self.Store Info" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Image_Image" Association="Self.FK_Image_Image">
+      <End Role="Restaurant" EntitySet="Restaurant" />
+      <End Role="Image" EntitySet="Image" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

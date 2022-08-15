@@ -1,0 +1,138 @@
+﻿@model Template.Models.Restaurant
+
+@{
+    ViewBag.Title = "Footer";
+}
+
+
+
+<!----------------------------------------------FOOTER SECTION------------------------------------------------------------->
+<footer class="footer py-4" style="background-color: #000000;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2 about__img d-flex justify-content-center mx-auto">
+                @if (Model != null && Model.support_logo_name != null)
+            {
+                <img src="@Url.Content(Model.support_logo_path + Model.support_logo_name)" alt="hungry4foodlogo" style="width: 90px;" height="90px;">
+
+            }
+            </div>
+            <div class="col-md-10 text-justify">
+                <p class="text-muted mt-1" style="font-size: small;">
+                    <i class="fas fa-info-circle bg-cols"></i> LEGAL INFO: Online Order Service is
+                    provided by Hungry4food.com a subsidiary of Noble Idea Solution LLC. Payment charged on your
+                    credit card statement is payment to food and services purchased from your restaurant.
+                    Charge-back fees applied for valid purchased will be responsibility of cardholder. Any Delivery
+                    Charge is not a tip paid to your driver. Please reward your driver for awesomeness. Delivery
+                    charge and tax may apply. Prices, participation, delivery area and charges may vary. Returned
+                    checks, along with the state maximum allowable returned check fee, may be electronically
+                    presented to your bank.
+                </p>
+            </div>
+            <div class="footer__inner w-100 pt-1 row mt-3"></div>
+            <div class="col-12 col-md-6 col-lg-3">
+                <p class="text-white mt-5 font-weight-bold footer__heading">
+                    @(Model!=null? Model.title: "") 
+                </p>
+
+                <p class=" text-white m-0 p-0">
+                    rspiciatis unde omnis iste natus error sit voluptatem accusantium
+                    doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi
+                    architecto beatae vitae dicta sunt explicabo. Nemo eni
+                </p>
+
+            </div>
+            <div class="col-12 col-md-6 col-lg-3">
+                <p class="text-white mt-5 font-weight-bold footer__heading">
+                    Quick links
+                </p>
+                <ul class="m-0 p-0">
+                    <li class="mt-4">
+                        <a href="#" class="text-white">Home</a>
+                    </li>
+                    <li class="mt-2">
+                        <a href="#" class="text-white">About</a>
+                    </li>
+                    <li class="mt-2">
+                        <a href="#" class="text-white">Order Now</a>
+                    </li>
+                    <li class="mt-2">
+                        <a href="#" class="text-white">Open Hours</a>
+                    </li>
+                    <li class="mt-2">
+                        <a href="#" class="text-white">Reserve a Table</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-12 col-md-6 col-lg-3">
+                <p class="text-white mt-5 font-weight-bold footer__heading">
+                    FIND US
+                </p>
+                <ul class="d-flex flex-column m-0 p-0">
+                    <li class="mt-4">
+                        <a href="#" class="text-white display-5 text-underline d-flex align-items-center">
+                            <i class="fa fa-envelope bg-cols"></i>
+                            <span class="pl-3">info@restaurant.com</span>
+                        </a>
+                    </li>
+                    <li class="mt-4">
+                        <a href="#" class="text-white d-flex align-items-center">
+                            <i class="fa fa-phone bg-cols"></i>
+                            <span class="pl-3">0128012345678</span>
+                        </a>
+                    </li>
+                    <li class="mt-4">
+                        <a href="#" class="text-white d-flex align-items-center">
+                            <i class="fa fa-map-marker bg-cols"></i>
+                            <span class="pl-3">
+                                Nebraska, United States
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="col-12 col-md-6 col-lg-3">
+                <p class="text-white mt-5 font-weight-bold footer__heading">
+                    FOLLOW US
+                </p>
+
+                <div class="footer__social pt-3 d-flex align-items-center justify-content-between">
+                    <a href="#">
+                        <i class="fab fa-facebook fa-2x bg-cols"></i>
+                    </a>
+                    <a href="#">
+                        <i class="fab fa-instagram fa-2x bg-cols"></i>
+                    </a>
+                    <a href="#">
+                        <i class="fab fa-twitter fa-2x bg-cols"></i>
+                    </a>
+                    <a href="#">
+                        <i class="fab fa-youtube fa-2x bg-cols"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="container d-flex mt-5 align-items-center justify-content-between mx-auto">
+            <div class="footer__inner w-100 pt-1 row">
+
+                <div class="text-muted col-12  text-center mt-5 mt-md-1 mb-0">
+                    For food related queries, contact
+                    <strong>0987654321</strong>
+                </div>
+                <div class="text-muted col-12  text-center mt-md-1">
+                    For website/payment related queries, contact
+                    <strong>0987654321</strong>
+                </div>
+                <div class="text-white col-12  text-center mt-5 mt-md-3">
+                    <span class="bg-cols"> hungry4food.com </span> &copy; 2021. All Rights Reserved.
+                    <strong>Terms of use</strong> and
+                    <strong>Privacy Policy</strong>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+</footer>

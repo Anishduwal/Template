@@ -1,0 +1,232 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ProjectModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Image">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Restaurant_id" Type="bigint" />
+          <Property Name="title" Type="varchar" MaxLength="250" />
+          <Property Name="image_name" Type="varchar" MaxLength="250" />
+          <Property Name="image_path" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="Restaurant">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="title" Type="varchar(max)" />
+          <Property Name="subtitle" Type="varchar(max)" />
+          <Property Name="address" Type="varchar" MaxLength="250" />
+          <Property Name="description" Type="varchar(max)" />
+          <Property Name="DisplayReservationbutton" Type="bit" Nullable="false" />
+          <Property Name="support_logo_name" Type="varchar" MaxLength="250" />
+          <Property Name="support_logo_path" Type="varchar" MaxLength="250" />
+          <Property Name="support_number" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="Store hour">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Day" Type="varchar" MaxLength="50" />
+          <Property Name="From_time" Type="time" Precision="7" Nullable="false" />
+          <Property Name="To_time" Type="time" Precision="7" />
+          <Property Name="Open_time" Type="bit" />
+        </EntityType>
+        <EntityType Name="Store Info">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="Street_address" Type="varchar" MaxLength="50" />
+          <Property Name="State" Type="varchar" MaxLength="50" />
+          <Property Name="City" Type="varchar" MaxLength="50" />
+          <Property Name="Zip_code" Type="int" />
+          <Property Name="phone_number" Type="varchar" MaxLength="50" />
+          <Property Name="Enable_future_order" Type="bit" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Image_Image">
+          <End Role="Restaurant" Type="Self.Restaurant" Multiplicity="0..1" />
+          <End Role="Image" Type="Self.Image" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Restaurant">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Image">
+              <PropertyRef Name="Restaurant_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ProjectModelStoreContainer">
+          <EntitySet Name="Image" EntityType="Self.Image" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Restaurant" EntityType="Self.Restaurant" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Store hour" EntityType="Self.Store hour" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Store Info" EntityType="Self.Store Info" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Image_Image" Association="Self.FK_Image_Image">
+            <End Role="Restaurant" EntitySet="Restaurant" />
+            <End Role="Image" EntitySet="Image" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ProjectModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="ProjectEntities" annotation:LazyLoadingEnabled="true" >
+          <EntitySet Name="Images" EntityType="ProjectModel.Image" />
+          <EntitySet Name="Restaurants" EntityType="ProjectModel.Restaurant" />
+          <AssociationSet Name="FK_Image_Image" Association="ProjectModel.FK_Image_Image">
+            <End Role="Restaurant" EntitySet="Restaurants" />
+            <End Role="Image" EntitySet="Images" />
+          </AssociationSet>
+          <EntitySet Name="Store_Infoes" EntityType="ProjectModel.Store_Info" />
+          <EntitySet Name="Store_hours" EntityType="ProjectModel.Store_hour" />
+        </EntityContainer>
+        <EntityType Name="Image">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Restaurant_id" Type="Int64" />
+          <Property Name="title" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="image_name" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="image_path" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Restaurant" Relationship="ProjectModel.FK_Image_Image" FromRole="Image" ToRole="Restaurant" />
+        </EntityType>
+        <EntityType Name="Restaurant">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="title" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="subtitle" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="address" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DisplayReservationbutton" Type="Boolean" Nullable="false" />
+          <Property Name="support_logo_name" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="support_logo_path" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="support_number" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Images" Relationship="ProjectModel.FK_Image_Image" FromRole="Restaurant" ToRole="Image" />
+        </EntityType>
+        <Association Name="FK_Image_Image">
+          <End Type="ProjectModel.Restaurant" Role="Restaurant" Multiplicity="0..1" />
+          <End Type="ProjectModel.Image" Role="Image" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Restaurant">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Image">
+              <PropertyRef Name="Restaurant_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Store_Info">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Street_address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Zip_code" Type="Int32" />
+          <Property Name="phone_number" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Enable_future_order" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Store_hour">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Day" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="From_time" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="To_time" Type="Time" Precision="7" />
+          <Property Name="Open_time" Type="Boolean" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ProjectModelStoreContainer" CdmEntityContainer="ProjectEntities" >
+          <EntitySetMapping Name="Images">
+            <EntityTypeMapping TypeName="ProjectModel.Image">
+              <MappingFragment StoreEntitySet="Image">
+                <ScalarProperty Name="image_path" ColumnName="image_path" />
+                <ScalarProperty Name="image_name" ColumnName="image_name" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="Restaurant_id" ColumnName="Restaurant_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Restaurants">
+            <EntityTypeMapping TypeName="ProjectModel.Restaurant">
+              <MappingFragment StoreEntitySet="Restaurant">
+                <ScalarProperty Name="support_number" ColumnName="support_number" />
+                <ScalarProperty Name="support_logo_path" ColumnName="support_logo_path" />
+                <ScalarProperty Name="support_logo_name" ColumnName="support_logo_name" />
+                <ScalarProperty Name="DisplayReservationbutton" ColumnName="DisplayReservationbutton" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="subtitle" ColumnName="subtitle" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Store_Infoes">
+            <EntityTypeMapping TypeName="ProjectModel.Store_Info">
+              <MappingFragment StoreEntitySet="Store Info">
+                <ScalarProperty Name="Enable_future_order" ColumnName="Enable_future_order" />
+                <ScalarProperty Name="phone_number" ColumnName="phone_number" />
+                <ScalarProperty Name="Zip_code" ColumnName="Zip_code" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Street_address" ColumnName="Street_address" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Store_hours">
+            <EntityTypeMapping TypeName="ProjectModel.Store_hour">
+              <MappingFragment StoreEntitySet="Store hour">
+                <ScalarProperty Name="Open_time" ColumnName="Open_time" />
+                <ScalarProperty Name="To_time" ColumnName="To_time" />
+                <ScalarProperty Name="From_time" ColumnName="From_time" />
+                <ScalarProperty Name="Day" ColumnName="Day" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
